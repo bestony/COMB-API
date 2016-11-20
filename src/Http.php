@@ -2,6 +2,6 @@
 namespace Bestony\Comb;
 class Http{
     public function doRequest($arg = []){
-        echo 1;
+       return true;
     }
 }
