@@ -1,0 +1,22 @@
+{
+    "name": "bestony/comb",
+    "description": "c.163.com  php sdk",
+    "type": "php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bestony",
+            "email": "best.tony@foxmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "5.5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bestony\\Comb\\": "src"
+        }
+    }
+}
