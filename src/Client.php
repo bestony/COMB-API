@@ -22,6 +22,9 @@ class Client
         $this->app_secret = $app_secret;
     }
     public function getToken(){
-
+        $arr = array(
+            "app_key" => $this->app_key,
+            "app_secret" => $this->app_secret
+        );
     }
 }

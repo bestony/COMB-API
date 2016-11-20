@@ -10,12 +10,13 @@ namespace Bestony\Comb;
 
 class Http
 {
+    public $BASE_URL = 'https://open.c.163.com';
     /**
      * 生成 Json 数据串
      * @param array $array
      * @return string
      */
-    public function makeJson($array= []){
+    private function makeJson($array= []){
         return json_encode($array);
     }
 
@@ -31,8 +32,10 @@ class Http
      * @return mixed
      */
     public function makePostRequest($url= '',$data= '',$header=''){
+        $url = $this->BASE_URL.$url;
+        $json= $this->makeJson($data);
         $response = \Httpful\Request::post($url)
-            ->body($data)
+            ->body($json)
             ->addHeader('Content-Type','application/json')
             ->headers($header)
             ->send();
