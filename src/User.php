@@ -6,14 +6,29 @@
  * Time: 1:37
  */
 namespace Bestony\Comb;
-
+use Bestony\Comb;
 
 class User
 {
     public  function  test(){
         return 1;
     }
-    public function getToken($accessKeyId,$accessKeySecret){
 
+    /**
+     * 获取Token
+     * @Todo Token 缓存
+     * @param $app_key
+     * @param $app_secret
+     * @return mixed
+     */
+    public function getToken($app_key,$app_secret)
+      {
+            $arr = array(
+                'app_key' => $app_key,
+                'app_secret' => $app_secret
+            );
+            $http = new Comb\Http;
+            $res = $http->makePostRequest("/api/v1/token", $arr);
+            return $res->token;
     }
 }

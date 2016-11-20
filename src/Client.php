@@ -7,7 +7,7 @@
  */
 
 namespace Bestony\Comb;
-use Bestony\Comb\User;
+use Bestony\Comb;
 
 class Client
 {
@@ -20,11 +20,11 @@ class Client
     {
         $this->app_key = $app_key;
         $this->app_secret = $app_secret;
+        return $this;
     }
-    public function getToken(){
-        $arr = array(
-            "app_key" => $this->app_key,
-            "app_secret" => $this->app_secret
-        );
+    private function getToken(){
+        $user = new Comb\User;
+        $token = $user->getToken($this->app_key,$this->app_secret);
+        return $token;
     }
 }
