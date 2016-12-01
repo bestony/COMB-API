@@ -22,6 +22,31 @@ class Client
         $this->app_secret = $app_secret;
         return $this;
     }
+    //---------------------Public Function -------------------//
+    /**
+     * 获取用户的镜像
+     * @param int $limit
+     * @param int $offset
+     * @return array|object|string
+     */
+    public function getImages($limit = 20,$offset = 0){
+        $repo = new Comb\Repo;
+        $token = $this->getToken();
+        $images = $repo->getImages($token,$limit,$offset);
+        return $images;
+    }
+    public function getImage($id){
+        $repo = new Comb\Repo;
+        $token = $this->getToken();
+        $image = $repo->getImage($token,$id);
+        return $image;
+    }
+
+    //---------------------Private Function -------------------//
+    /**
+     * 获取Token
+     * @return mixed
+     */
     private function getToken(){
         $user = new Comb\User;
         $token = $user->getToken($this->app_key,$this->app_secret);
