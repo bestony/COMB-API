@@ -20,22 +20,35 @@ class Http
         return json_encode($array);
     }
 
-    public function makeGetRequest($url= '',$data='',$header=''){
-
+    /**
+     * 生成Get请求
+     * @param string $url
+     * @param array $data
+     * @param array $header
+     * @return array|object|string
+     */
+    public function makeGetRequest($url= '',$data=[],$header=[]){
+            $url = $this->BASE_URL.$url;
+            $jsonParam=$this->makeJson($data);
+            $response = \Httpful\Request::get($url)
+                ->body($jsonParam)
+                ->addHeaders($header)
+                ->send();
+            return $response->body;
     }
 
     /**
      * 生成 Post 请求
      * @param string $url
-     * @param string $data
-     * @param string $header
+     * @param array $data
+     * @param array $header
      * @return mixed
      */
-    public function makePostRequest($url= '',$data= '',$header=''){
+    public function makePostRequest($url= '',$data=[],$header=[]){
         $url = $this->BASE_URL.$url;
-        $json= $this->makeJson($data);
+        $jsonParam= $this->makeJson($data);
         $response = \Httpful\Request::post($url)
-            ->body($json)
+            ->body($jsonParam)
             ->addHeader('Content-Type','application/json')
             ->headers($header)
             ->send();
