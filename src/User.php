@@ -10,10 +10,6 @@ use Bestony\Comb;
 
 class User
 {
-    public  function  test(){
-        return 1;
-    }
-
     /**
      * 获取Token
      * @Todo Token 缓存
